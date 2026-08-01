@@ -96,4 +96,18 @@ public class Book {
     public void setBorrowCount(Long borrowCount) {
         this.borrowCount = borrowCount;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", category=" + category +
+                ", isbn='" + isbn + '\'' +
+                ", publishYear=" + publishYear +
+                ", pages=" + pages +
+                ", status=" + status +
+                ", borrowCount=" + borrowCount +
+                '}';
+    }
 }

@@ -56,4 +56,15 @@ public class Member {
     public void setBorrowedBooks(Long borrowedBooks) {
         this.borrowedBooks = borrowedBooks;
     }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", borrowedBooks=" + borrowedBooks +
+                '}';
+    }
 }
