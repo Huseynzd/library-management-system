@@ -11,8 +11,13 @@ import java.time.LocalDate;
 
 public class LoanService {
     private LoanRepository repository = new LoanRepository();
-    private BookService bookService = new BookService();
-    private MemberService memberService = new MemberService();
+    private BookService bookService;
+    private MemberService memberService;
+
+    public LoanService(BookService bookService, MemberService memberService){
+        this.bookService = bookService;
+        this.memberService = memberService;
+    }
 
     public void addLoan(Loan loan){
         repository.save(loan);
