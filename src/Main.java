@@ -12,14 +12,19 @@ public class Main{
        MemberService memberService = new MemberService();
        LoanService loanService = new LoanService(bookService,memberService);
 
-       Book book1 = new Book(1l,"aa",Category.DRAMA,
-               "123-456",2007l,
-               123l,BookStatus.AVAILABLE,12l);
+       Book book1 = new Book(1L,"aa",Category.DRAMA,
+               "123-456",2007L,
+               123L,BookStatus.AVAILABLE,12L);
 
-       Member member1 = new Member(1l,"nihat","23123","@",123l);
+       Member member1 = new Member(1L,"nihat","23123","@",123L);
+
+
        bookService.addBook(book1);
        memberService.addMember(member1);
-       loanService.borrowBook(1l,1l);
+       loanService.borrowBook(1L,1L);
+       loanService.returnBook(1L);
        System.out.println(book1.getStatus());
+
    }
+
 }
