@@ -14,6 +14,7 @@ public class Book {
     private Long pages;
     private BookStatus status;
     private Long borrowCount;
+    private String author;
 
     public Book(){};
 
@@ -22,7 +23,7 @@ public class Book {
                 Category category,
                 String isbn,
                 Long publishYear,
-                Long pages, BookStatus status, Long borrowCount) {
+                Long pages, BookStatus status, Long borrowCount,String author) {
         this.id = id;
         this.title = title;
         this.category = category;
@@ -31,6 +32,15 @@ public class Book {
         this.pages = pages;
         this.status = status;
         this.borrowCount = borrowCount;
+        this.author = author;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public Long getId() {
