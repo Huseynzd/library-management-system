@@ -15,6 +15,8 @@ public class Main{
        Book book1 = new Book(1L,"aa",Category.DRAMA,
                "123-456",2007L,
                123L,BookStatus.AVAILABLE,12L);
+       Book book2 = new Book(1L,"bb",Category.DRAMA,"987-654",2026L,456L,
+               BookStatus.AVAILABLE,31L);
 
        Member member1 = new Member(1L,"nihat","23123","@",123L);
 
@@ -23,7 +25,8 @@ public class Main{
        memberService.addMember(member1);
        loanService.borrowBook(1L,1L);
        loanService.returnBook(1L);
-       System.out.println(book1.getStatus());
+       bookService.updateBook(1L,book2);
+       System.out.println(book1);
 
    }
 

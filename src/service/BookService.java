@@ -24,4 +24,17 @@ public class BookService {
     public void deleteBook(Book book){
         repository.delete(book);
     }
+
+    public void updateBook(Long id, Book updatedBook){
+        Book book = repository.findById(id);
+        if (book == null){
+            System.out.println("Book not found");
+            return;
+        }
+        book.setTitle(updatedBook.getTitle());
+        book.setPages(updatedBook.getPages());
+        book.setBorrowCount(updatedBook.getBorrowCount());
+        book.setIsbn(updatedBook.getIsbn());
+        book.setPublishYear(updatedBook.getPublishYear());
+    }
 }
