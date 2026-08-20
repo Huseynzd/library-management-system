@@ -9,7 +9,9 @@ import repository.MemberRepository;
 
 import javax.security.auth.login.CredentialException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class LoanService {
     private LoanRepository repository = new LoanRepository();
@@ -39,7 +41,7 @@ public class LoanService {
             System.out.println("Member not found");
             return;
         }
-        Loan loan = new Loan(1l,book,member, LocalDate.now(),
+        Loan loan = new Loan(1L,book,member, LocalDate.now(),
                 LocalDate.now().plusDays(14),
                 null);
         repository.save(loan);
@@ -63,5 +65,15 @@ public class LoanService {
         loan.getBook().setStatus(BookStatus.AVAILABLE);
         loan.getBook();
 
+    }
+    public List<Loan> getActivesLoansByMember(Long memberId){
+        List<Loan> loans = repository.findAll();
+        List<Loan> activeLoans = new ArrayList<>();
+        for (Loan loan : loans){
+           if (loan.getMember().getId().equals(memberId) && loan.getReturnDate() == null){
+               activeLoans.add(loan);
+           }
+        }
+            return activeLoans;
     }
 }

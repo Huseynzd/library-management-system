@@ -1,5 +1,6 @@
 package service;
 
+import enums.BookStatus;
 import enums.Category;
 import model.Book;
 import repository.BookRepository;
@@ -66,4 +67,20 @@ public class BookService {
         }
         return books;
     }
+
+    public List<Book> getAvailableBooks(){
+      return repository.findAll()
+              .stream()
+              .filter(book -> book.getStatus().equals(BookStatus.AVAILABLE))
+              .toList();
+    }
+
+    public List<Book> getBorrowedBooks(){
+        return repository.findAll()
+                .stream()
+                .filter(book -> book.getStatus().equals(BookStatus.BORROWED))
+                .toList();
+    }
+
+
 }

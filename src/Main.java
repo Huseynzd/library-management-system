@@ -21,12 +21,7 @@ public class Main{
        Member member1 = new Member(1L,"nihat","23123","@",123L);
 
 
-       bookService.addBook(book1);
-       memberService.addMember(member1);
-       loanService.borrowBook(1L,1L);
-       loanService.returnBook(1L);
-       bookService.updateBook(1L,book2);
-       System.out.println(book1);
+       System.out.println(bookService.getAvailableBooks());
 
    }
 
