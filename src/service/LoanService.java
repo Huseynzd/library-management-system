@@ -9,6 +9,7 @@ import repository.MemberRepository;
 
 import javax.security.auth.login.CredentialException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -76,4 +77,39 @@ public class LoanService {
         }
             return activeLoans;
     }
+    public List<Loan> getLoansByMember(Long memberId){
+        List<Loan> loans = repository.findAll();
+        return loans.stream()
+                .filter(loan -> loan.getMember().getId().equals(memberId))
+                .toList();
+    }
+    public List<Loan> getOverDueLoans(){
+        List<Loan> loans = repository.findAll();
+        List<Loan> overDueLoans = new ArrayList<>();
+        for (Loan loan : loans){
+            if (loan.getBorrowDate().plusDays(14).isBefore(LocalDate.now())
+                    && loan.getReturnDate() == null){
+                overDueLoans.add(loan);
+            }
+        }
+        return overDueLoans;
+    }
+    public int getAvailableBookCount(){
+         return bookService.getAvailableBooks().size();
+    }
+    public int getBorrowedBookCount(){
+        return bookService.getBorrowedBooks().size();
+    }
+
+    public List<Loan> getLoanHistory(Long memberId){
+        List<Loan> loans = repository.findAll();
+        List<Loan> membersLoans = new ArrayList<>();
+        for (Loan loan : loans){
+            if (loan.getMember().getId().equals(memberId)){
+                membersLoans.add(loan);
+            }
+        }
+        return membersLoans;
+    }
+
 }
